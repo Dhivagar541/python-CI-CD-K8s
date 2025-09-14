@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: weather-time-api
+namespace: python-ci-cd-k8s
+spec:
+replicas: 2
+selector:
+matchLabels:
+app: weather-time-api
+template:
+metadata:
+labels:
+app: weather-time-api
+spec:
+containers:
+- name: weather-time-api
+image: ghcr.io/YOUR_USERNAME/python-ci-cd-k8s:latest
+imagePullPolicy: Always
+ports:
+- containerPort: 8000
+livenessProbe:
+httpGet:
+path: /health
+port: 8000
+initialDelaySeconds: 10
+periodSeconds: 20
+readinessProbe:
+httpGet:
+path: /health
+port: 8000
+initialDelaySeconds: 5
+periodSeconds: 10
