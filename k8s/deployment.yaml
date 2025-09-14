@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: weather-time-api
-          image: ghcr.io/YOUR_USERNAME/python-ci-cd-k8s:latest
+          image: ghcr.io/Dhivagar541/python-ci-cd-k8s:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
